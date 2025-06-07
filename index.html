@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UHD Masti - Browse Movies</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+  <header class="header">
+    <img src="assets/images/logo.png" alt="UHD Masti Logo" class="logo">
+    <h1>UHD Masti</h1>
+    <input type="text" class="search-bar" placeholder="Search movies..." aria-label="Search movies">
+    <div class="header-ad"></div>
+  </header>
+  <main>
+    <section class="filters">
+      <!-- Dynamically populated category buttons -->
+    </section>
+    <section class="movie-count">Movies: <span>0</span></section>
+    <section class="movie-grid" aria-busy="true">
+      <!-- Skeleton cards (12 placeholders) -->
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <div class="movie-card skeleton"></div>
+      <!-- Actual movie cards will replace skeletons -->
+    </section>
+    <aside class="sidebar-ad"></aside>
+    <button class="load-more" aria-label="Load more movies">Load More</button>
+  </main>
+  <footer>
+    <span>© 2025 UHD Masti</span>
+    <a href="contact.html" aria-label="Contact us">Contact Us</a>
+    <a href="admin/login.html" aria-label="Admin panel">Admin Panel</a>
+    <div class="footer-ad"></div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

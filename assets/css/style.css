@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.header {
+  background: linear-gradient(#1a1a1a, #2c2c2c);
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-bar:focus {
+  outline: none;
+  border: 2px solid #ff6f61;
+}
+
+.filters {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  background: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: #ff867a;
+}
+
+.filter-btn.active {
+  background: #e65a50;
+}
+
+.movie-count {
+  padding: 0 16px;
+  color: #808080;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.movie-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.movie-card .title,
+.movie-card .genre,
+.movie-card .rating,
+.movie-card .status {
+  padding: 8px;
+}
+
+.skeleton {
+  background: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  /* Ensure skeleton cards have a defined height if their content is empty */
+  height: 400px; /* Adjust as needed to match movie card height */
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start shimmer off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); /* Adjusted shimmer gradient */
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); } /* Start off-screen left */
+  100% { transform: translateX(100%); } /* End off-screen right */
+}
+
+
+.load-more {
+  display: block;
+  margin: 16px auto;
+  background: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background: #ff867a;
+}
+
+.sidebar-ad {
+  width: 300px;
+  height: 600px;
+  margin: 16px;
+  background: #e0e0e0; /* Placeholder background for ad */
+  display: none; /* Hidden by default, shown in media query */
+}
+
+@media (min-width: 1024px) {
+  .main-content { /* Assuming a wrapper div for movie-grid and sidebar-ad for layout */
+    display: flex;
+  }
+  .movie-grid {
+    flex-grow: 1;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sidebar-ad {
+    display: block;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    margin-left: 16px; /* Add space between grid and sidebar */
+  }
+}
+
+footer {
+  background: #1a1a1a;
+  color: #808080;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow footer items to wrap on small screens */
+}
+
+footer span, footer a {
+  margin: 5px; /* Add some spacing for wrapped items */
+}
+
+footer a {
+  color: #ff6f61;
+  text-decoration: none;
+}
+
+/* Add a specific height to skeleton card elements if needed for better layout before content loads */
+.skeleton .movie-poster-skeleton {
+    height: 300px; /* Matches image height */
+    background-color: #ccc; /* Darker placeholder for poster area */
+    border-radius: 5px 5px 0 0;
+}
+.skeleton .text-line-skeleton {
+    height: 20px; /* Approximate height for text lines */
+    background-color: #ccc;
+    margin: 8px;
+    border-radius: 3px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-bar {
+    width: 100%; /* Full width on smaller screens */
+    margin-top: 10px;
+  }
+  .movie-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
